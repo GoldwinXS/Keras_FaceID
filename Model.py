@@ -2,7 +2,6 @@
 
 Inspired by: https://machinelearningmastery.com/how-to-develop-a-face-recognition-system-using-facenet-in-keras-and-an-svm-classifier/
 facenet weights: https://drive.google.com/open?id=1pwQ3H4aJ8a6yyJHZkTwtjcL4wYWQb7bn
-cosine distance: https://sefiks.com/2018/08/13/cosine-similarity-in-machine-learning/
 
 
 
@@ -31,7 +30,7 @@ class FaceID:
 
         # load or create an SVM classifier
         if not os.path.exists(self.svm_path):
-            self.classifier = SVC(kernel='linear', probability=True)
+            self.classifier = SVC()
         else:
             self.classifier = self.load_pickle(self.svm_path)
 
@@ -205,8 +204,3 @@ class FaceID:
         """
         with open(filename, 'rb') as handle:
             return pickle.load(handle)
-
-
-f = FaceID()
-
-f.train_from_file('./training_data/')
